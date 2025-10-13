@@ -4,32 +4,60 @@
  * Handles the dark/light theme toggling and a playful fun‑fact generator.
  */
 
+const THEME_STORAGE_KEY = 'theme';
+const STYLE_STORAGE_KEY = 'style';
+const DEFAULT_THEME = 'light';
+const DEFAULT_STYLE = 'modern';
+const STYLE_PRESETS = new Set(['modern', 'editorial', 'mono', 'airy']);
+
+function updateThemeToggleButton(currentTheme) {
+  const button = document.getElementById('theme-toggle');
+  if (!button) return;
+  button.textContent = currentTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+}
+
+function applyStylePreset(preset, options = {}) {
+  const { persist = false } = options;
+  const finalPreset = STYLE_PRESETS.has(preset) ? preset : DEFAULT_STYLE;
+  document.body.setAttribute('data-style', finalPreset);
+  const select = document.getElementById('style-select');
+  if (select && select.value !== finalPreset) {
+    select.value = finalPreset;
+  }
+  if (persist) {
+    localStorage.setItem(STYLE_STORAGE_KEY, finalPreset);
+  }
+}
+
 // Theme toggle logic
 function toggleTheme() {
   const body = document.body;
   const currentTheme = body.getAttribute('data-theme');
   const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
   body.setAttribute('data-theme', newTheme);
-  localStorage.setItem('theme', newTheme);
+  localStorage.setItem(THEME_STORAGE_KEY, newTheme);
   // Update toggle button label based on current theme
-  const button = document.getElementById('theme-toggle');
-  if (button) {
-    button.textContent = newTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
-  }
+  updateThemeToggleButton(newTheme);
 }
 
 // Initialise theme on page load based on saved preference
 document.addEventListener('DOMContentLoaded', () => {
-  const storedTheme = localStorage.getItem('theme');
-  if (storedTheme) {
-    document.body.setAttribute('data-theme', storedTheme);
-    const button = document.getElementById('theme-toggle');
-    if (button) {
-      button.textContent = storedTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
-    }
-  } else {
-    // Default to light theme
-    document.body.setAttribute('data-theme', 'light');
+  const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+  const initialTheme = storedTheme === 'dark' ? 'dark' : DEFAULT_THEME;
+  document.body.setAttribute('data-theme', initialTheme);
+  updateThemeToggleButton(initialTheme);
+
+  const storedStyle = localStorage.getItem(STYLE_STORAGE_KEY);
+  const initialStyle = STYLE_PRESETS.has(storedStyle) ? storedStyle : DEFAULT_STYLE;
+  applyStylePreset(initialStyle);
+
+  const styleSelect = document.getElementById('style-select');
+  if (styleSelect) {
+    styleSelect.value = initialStyle;
+    styleSelect.addEventListener('change', (event) => {
+      const nextPreset = event.target.value;
+      applyStylePreset(nextPreset, { persist: true });
+    });
   }
 });
 

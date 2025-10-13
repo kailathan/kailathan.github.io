@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="assets/style.css">
   <script defer src="assets/script.js"></script>
 </head>
-<body>
+<body data-theme="light" data-style="modern">
   <header>
     <h1>Kai&nbsp;Li</h1>
     <nav>
@@ -18,7 +18,16 @@
       <a href="experience.html">Experience</a>
       <a href="cv.html">CV</a>
     </nav>
-    <button id="theme-toggle" onclick="toggleTheme()">Switch to dark mode</button>
+    <div class="header-controls">
+      <button id="theme-toggle" onclick="toggleTheme()">Switch to dark mode</button>
+      <label class="sr-only" for="style-select">Switch visual style</label>
+      <select id="style-select" aria-label="Style preset">
+        <option value="modern">Modern clean</option>
+        <option value="editorial">Editorial serif</option>
+        <option value="mono">Mono minimal</option>
+        <option value="airy">Airy spacious</option>
+      </select>
+    </div>
   </header>
   <main>
     <section>

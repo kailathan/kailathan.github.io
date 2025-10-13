@@ -5,43 +5,178 @@
  * A CSS custom property system is used to support light and dark themes.
  */
 
-/* Import a modern sans‑serif font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+/* Import font families used across the available style presets */
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap');
 
 /* Base colour variables for the light theme */
 :root {
-  /* A neutral, minimalistic palette */
-  --background-color: #ffffff;
-  --primary-color: #333333;
-  --secondary-color: #555555;
-  --accent-color: #888888;
-  --text-color: #222222;
-  --link-color: #0066cc;
-  --nav-bg-color: #f7f7f7;
-  --nav-text-color: #333333;
-  --footer-bg-color: #f7f7f7;
-  --footer-text-color: #777777;
+  /* Typography */
+  --font-body: 'Inter', sans-serif;
+  --font-heading: 'Inter', sans-serif;
+
+  /* Light/Dark palettes used as sources for the active theme */
+  --color-background-light: #ffffff;
+  --color-background-dark: #121212;
+  --color-primary-light: #333333;
+  --color-primary-dark: #e0e0e0;
+  --color-secondary-light: #555555;
+  --color-secondary-dark: #bbbbbb;
+  --color-accent-light: #888888;
+  --color-accent-dark: #888888;
+  --color-text-light: #222222;
+  --color-text-dark: #ffffff;
+  --color-link-light: #0066cc;
+  --color-link-dark: #4dabf7;
+  --color-nav-bg-light: #f7f7f7;
+  --color-nav-bg-dark: #1f1f1f;
+  --color-nav-text-light: #333333;
+  --color-nav-text-dark: #ffffff;
+  --color-footer-bg-light: #f7f7f7;
+  --color-footer-bg-dark: #1f1f1f;
+  --color-footer-text-light: #777777;
+  --color-footer-text-dark: #777777;
+
+  /* Derived tokens consumed by the layout */
+  --background-color: var(--color-background-light);
+  --primary-color: var(--color-primary-light);
+  --secondary-color: var(--color-secondary-light);
+  --accent-color: var(--color-accent-light);
+  --text-color: var(--color-text-light);
+  --link-color: var(--color-link-light);
+  --nav-bg-color: var(--color-nav-bg-light);
+  --nav-text-color: var(--color-nav-text-light);
+  --footer-bg-color: var(--color-footer-bg-light);
+  --footer-text-color: var(--color-footer-text-light);
+
+  /* Layout tokens */
+  --content-max-width: 900px;
+  --content-padding: 2rem;
+  --section-spacing: 3rem;
+  --border-radius: 8px;
+  --surface-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --nav-gap: 1rem;
+  --text-line-height: 1.6;
+  --section-divider: 2px solid var(--accent-color);
+  --input-bg: rgba(0, 0, 0, 0.04);
+  --input-border: 1px solid transparent;
+  --interactive-hover: rgba(0, 0, 0, 0.08);
 }
 
 /* Dark theme overrides using the data‑theme attribute on <body> */
 body[data-theme='dark'] {
   /* Dark theme variables for a neutral aesthetic */
-  --background-color: #121212;
-  --primary-color: #e0e0e0;
-  --secondary-color: #bbbbbb;
-  --accent-color: #888888;
-  --text-color: #ffffff;
-  --link-color: #4dabf7;
-  --nav-bg-color: #1f1f1f;
-  --nav-text-color: #ffffff;
-  --footer-bg-color: #1f1f1f;
-  --footer-text-color: #777777;
+  --background-color: var(--color-background-dark);
+  --primary-color: var(--color-primary-dark);
+  --secondary-color: var(--color-secondary-dark);
+  --accent-color: var(--color-accent-dark);
+  --text-color: var(--color-text-dark);
+  --link-color: var(--color-link-dark);
+  --nav-bg-color: var(--color-nav-bg-dark);
+  --nav-text-color: var(--color-nav-text-dark);
+  --footer-bg-color: var(--color-footer-bg-dark);
+  --footer-text-color: var(--color-footer-text-dark);
+  --input-bg: rgba(255, 255, 255, 0.04);
+  --input-border: 1px solid rgba(255, 255, 255, 0.1);
+  --interactive-hover: rgba(255, 255, 255, 0.08);
+  --surface-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Editorial / serif leaning preset */
+body[data-style='editorial'] {
+  --font-body: 'Crimson Text', serif;
+  --font-heading: 'Crimson Text', serif;
+  --color-background-light: #fdf8f2;
+  --color-background-dark: #1f1a17;
+  --color-primary-light: #2f2114;
+  --color-primary-dark: #f5eadf;
+  --color-secondary-light: #5f4630;
+  --color-secondary-dark: #d7c4b3;
+  --color-accent-light: #d6b084;
+  --color-accent-dark: #c69763;
+  --color-text-light: #2b1f16;
+  --color-text-dark: #f9f1e6;
+  --color-link-light: #9a5b2e;
+  --color-link-dark: #f2a469;
+  --color-nav-bg-light: #f3e6d8;
+  --color-nav-bg-dark: #2a211b;
+  --color-nav-text-light: #3f2e1f;
+  --color-nav-text-dark: #f5e8da;
+  --color-footer-bg-light: #f3e6d8;
+  --color-footer-bg-dark: #2a211b;
+  --color-footer-text-light: #6d5a4a;
+  --color-footer-text-dark: #d7c4b3;
+  --section-divider: 1px solid rgba(125, 92, 63, 0.35);
+  --border-radius: 0;
+  --surface-shadow: 0 1px 0 rgba(47, 33, 20, 0.12);
+  --interactive-hover: rgba(154, 91, 46, 0.18);
+}
+
+/* Tech forward / mono preset */
+body[data-style='mono'] {
+  --font-body: 'IBM Plex Mono', monospace;
+  --font-heading: 'Space Grotesk', sans-serif;
+  --color-background-light: #f4f6f8;
+  --color-background-dark: #101318;
+  --color-primary-light: #182026;
+  --color-primary-dark: #e8f1ff;
+  --color-secondary-light: #3c4856;
+  --color-secondary-dark: #a7b4c6;
+  --color-accent-light: #4c8bf5;
+  --color-accent-dark: #8cb2ff;
+  --color-text-light: #1a1f24;
+  --color-text-dark: #e6ecf5;
+  --color-link-light: #006dff;
+  --color-link-dark: #8cb2ff;
+  --color-nav-bg-light: #ffffff;
+  --color-nav-bg-dark: #141a23;
+  --color-nav-text-light: #1a1f24;
+  --color-nav-text-dark: #e6ecf5;
+  --color-footer-bg-light: #ffffff;
+  --color-footer-bg-dark: #141a23;
+  --color-footer-text-light: #5c6875;
+  --color-footer-text-dark: #a7b4c6;
+  --section-divider: 2px solid rgba(76, 139, 245, 0.35);
+  --border-radius: 12px;
+  --surface-shadow: 0 12px 30px rgba(16, 25, 36, 0.08);
+  --interactive-hover: rgba(76, 139, 245, 0.16);
+}
+
+/* Spacious / neo-grotesk preset */
+body[data-style='airy'] {
+  --font-body: 'Space Grotesk', sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
+  --color-background-light: #fbfbff;
+  --color-background-dark: #14131b;
+  --color-primary-light: #1d1a32;
+  --color-primary-dark: #f0ecff;
+  --color-secondary-light: #5a5775;
+  --color-secondary-dark: #c2bff0;
+  --color-accent-light: #8c7eff;
+  --color-accent-dark: #b5a9ff;
+  --color-text-light: #2a2645;
+  --color-text-dark: #f6f4ff;
+  --color-link-light: #6a5bff;
+  --color-link-dark: #c1b8ff;
+  --color-nav-bg-light: rgba(108, 95, 255, 0.08);
+  --color-nav-bg-dark: rgba(177, 167, 255, 0.12);
+  --color-nav-text-light: #2a2645;
+  --color-nav-text-dark: #f6f4ff;
+  --color-footer-bg-light: rgba(108, 95, 255, 0.08);
+  --color-footer-bg-dark: rgba(177, 167, 255, 0.12);
+  --color-footer-text-light: #5a5775;
+  --color-footer-text-dark: #c2bff0;
+  --content-max-width: 960px;
+  --content-padding: 3rem;
+  --section-spacing: 3.5rem;
+  --border-radius: 16px;
+  --surface-shadow: 0 18px 40px rgba(29, 26, 50, 0.12);
+  --interactive-hover: rgba(138, 126, 255, 0.18);
 }
 
 /* General page styling */
 html {
-  /* Use the imported Inter font for a clean, modern look */
-  font-family: 'Inter', sans-serif;
+  /* Use a token-driven typography system */
+  font-family: var(--font-body);
   scroll-behavior: smooth;
 }
 
@@ -52,15 +187,18 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  line-height: var(--text-line-height);
 }
 
 header {
   background-color: var(--nav-bg-color);
   padding: 1rem 2rem;
   display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--surface-shadow);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -74,8 +212,9 @@ header h1 {
 
 nav {
   display: flex;
-  gap: 1rem;
+  gap: var(--nav-gap);
   flex-wrap: wrap;
+  align-items: center;
 }
 
 nav a {
@@ -88,8 +227,8 @@ nav a {
 }
 
 nav a:hover {
-  background-color: var(--secondary-color);
-  color: var(--background-color);
+  background-color: var(--interactive-hover);
+  color: var(--link-color);
 }
 
 /* Theme toggle button */
@@ -98,33 +237,35 @@ nav a:hover {
   color: var(--background-color);
   border: none;
   padding: 0.5rem 1rem;
-  border-radius: 4px;
+  border-radius: var(--border-radius);
   cursor: pointer;
   font-size: 0.875rem;
-  transition: background-color 0.3s ease;
+  transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
 #theme-toggle:hover {
   background-color: var(--primary-color);
+  transform: translateY(-1px);
 }
 
 main {
   flex: 1;
-  padding: 2rem;
-  max-width: 900px;
+  padding: var(--content-padding);
+  max-width: var(--content-max-width);
   margin: 0 auto;
 }
 
 section {
-  margin-bottom: 3rem;
+  margin-bottom: var(--section-spacing);
 }
 
 section h2 {
   font-size: 1.75rem;
   margin-bottom: 0.5rem;
   color: var(--primary-color);
-  border-bottom: 2px solid var(--accent-color);
+  border-bottom: var(--section-divider);
   padding-bottom: 0.25rem;
+  font-family: var(--font-heading);
 }
 
 /* Publication and experience list styling */
@@ -135,6 +276,7 @@ section h2 {
 .item h3 {
   margin: 0;
   font-size: 1.25rem;
+  font-family: var(--font-heading);
   color: var(--secondary-color);
 }
 
@@ -164,6 +306,7 @@ footer {
   color: var(--footer-text-color);
   text-align: center;
   padding: 1rem;
+  margin-top: auto;
 }
 
 /* Embedded CV on cv.html */
@@ -173,4 +316,60 @@ footer {
   border: none;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header-controls {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.header-controls label {
+  font-size: 0.875rem;
+  color: var(--nav-text-color);
+}
+
+#style-select {
+  background-color: var(--background-color);
+  color: var(--nav-text-color);
+  border: var(--input-border);
+  border-radius: var(--border-radius);
+  padding: 0.45rem 0.75rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#style-select:hover,
+#style-select:focus-visible {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+@media (max-width: 720px) {
+  header {
+    padding: 1rem;
+  }
+
+  nav {
+    width: 100%;
+    justify-content: center;
+  }
+
+  main {
+    padding: 1.5rem;
+  }
 }
