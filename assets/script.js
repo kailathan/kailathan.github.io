@@ -7,8 +7,11 @@
 const THEME_STORAGE_KEY = 'theme';
 const STYLE_STORAGE_KEY = 'style';
 const DEFAULT_THEME = 'light';
-const DEFAULT_STYLE = 'modern';
-const STYLE_PRESETS = new Set(['modern', 'editorial', 'mono', 'airy']);
+const DEFAULT_STYLE = 'default';
+const STYLE_PRESETS = new Set(['default', 'editorial', 'mono', 'airy']);
+const LEGACY_STYLE_MAP = {
+  modern: 'default',
+};
 
 function updateThemeToggleButton(currentTheme) {
   const button = document.getElementById('theme-toggle');
@@ -18,7 +21,8 @@ function updateThemeToggleButton(currentTheme) {
 
 function applyStylePreset(preset, options = {}) {
   const { persist = false } = options;
-  const finalPreset = STYLE_PRESETS.has(preset) ? preset : DEFAULT_STYLE;
+  const mappedPreset = LEGACY_STYLE_MAP[preset] || preset;
+  const finalPreset = STYLE_PRESETS.has(mappedPreset) ? mappedPreset : DEFAULT_STYLE;
   document.body.setAttribute('data-style', finalPreset);
   const select = document.getElementById('style-select');
   if (select && select.value !== finalPreset) {
@@ -48,7 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
   updateThemeToggleButton(initialTheme);
 
   const storedStyle = localStorage.getItem(STYLE_STORAGE_KEY);
-  const initialStyle = STYLE_PRESETS.has(storedStyle) ? storedStyle : DEFAULT_STYLE;
+  const normalisedStoredStyle = LEGACY_STYLE_MAP[storedStyle] || storedStyle;
+  const initialStyle = STYLE_PRESETS.has(normalisedStoredStyle) ? normalisedStoredStyle : DEFAULT_STYLE;
   applyStylePreset(initialStyle);
 
   const styleSelect = document.getElementById('style-select');

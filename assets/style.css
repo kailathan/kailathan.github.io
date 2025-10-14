@@ -27,12 +27,12 @@
   --color-text-dark: #ffffff;
   --color-link-light: #0066cc;
   --color-link-dark: #4dabf7;
-  --color-nav-bg-light: #f7f7f7;
-  --color-nav-bg-dark: #1f1f1f;
+  --color-nav-bg-light: rgba(247, 247, 247, 0.92);
+  --color-nav-bg-dark: rgba(31, 31, 31, 0.85);
   --color-nav-text-light: #333333;
   --color-nav-text-dark: #ffffff;
-  --color-footer-bg-light: #f7f7f7;
-  --color-footer-bg-dark: #1f1f1f;
+  --color-footer-bg-light: rgba(247, 247, 247, 0.92);
+  --color-footer-bg-dark: rgba(31, 31, 31, 0.85);
   --color-footer-text-light: #777777;
   --color-footer-text-dark: #777777;
 
@@ -60,6 +60,10 @@
   --input-bg: rgba(0, 0, 0, 0.04);
   --input-border: 1px solid transparent;
   --interactive-hover: rgba(0, 0, 0, 0.08);
+  --surface-blur: blur(0px);
+  --background-image-light: none;
+  --background-image-dark: none;
+  --background-image: var(--background-image-light);
 }
 
 /* Dark theme overrides using the data‑theme attribute on <body> */
@@ -79,6 +83,37 @@ body[data-theme='dark'] {
   --input-border: 1px solid rgba(255, 255, 255, 0.1);
   --interactive-hover: rgba(255, 255, 255, 0.08);
   --surface-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  --background-image: var(--background-image-dark);
+}
+
+/* Default preset with textured backgrounds */
+body[data-style='default'] {
+  --font-body: 'Inter', sans-serif;
+  --font-heading: 'Inter', sans-serif;
+  --color-background-light: rgba(255, 255, 255, 0.92);
+  --color-background-dark: rgba(4, 28, 31, 0.92);
+  --color-primary-light: #1d3a40;
+  --color-primary-dark: #e1f7ff;
+  --color-secondary-light: #3b656d;
+  --color-secondary-dark: #9bd4d9;
+  --color-accent-light: #2f7a81;
+  --color-accent-dark: #6fd4dd;
+  --color-text-light: #1a2f32;
+  --color-text-dark: #effdff;
+  --color-link-light: #1b7f88;
+  --color-link-dark: #86e6ee;
+  --color-nav-bg-light: rgba(255, 255, 255, 0.78);
+  --color-nav-bg-dark: rgba(5, 35, 40, 0.65);
+  --color-nav-text-light: #1d3a40;
+  --color-nav-text-dark: #effdff;
+  --color-footer-bg-light: rgba(255, 255, 255, 0.78);
+  --color-footer-bg-dark: rgba(5, 35, 40, 0.65);
+  --color-footer-text-light: #3b656d;
+  --color-footer-text-dark: #9bd4d9;
+  --interactive-hover: rgba(47, 122, 129, 0.18);
+  --surface-blur: blur(18px);
+  --background-image-light: url('site_background_white_sparse.png');
+  --background-image-dark: url('site_background_teal_sparse.png');
 }
 
 /* Editorial / serif leaning preset */
@@ -97,18 +132,21 @@ body[data-style='editorial'] {
   --color-text-dark: #f9f1e6;
   --color-link-light: #9a5b2e;
   --color-link-dark: #f2a469;
-  --color-nav-bg-light: #f3e6d8;
-  --color-nav-bg-dark: #2a211b;
+  --color-nav-bg-light: rgba(243, 230, 216, 0.88);
+  --color-nav-bg-dark: rgba(42, 33, 27, 0.82);
   --color-nav-text-light: #3f2e1f;
   --color-nav-text-dark: #f5e8da;
-  --color-footer-bg-light: #f3e6d8;
-  --color-footer-bg-dark: #2a211b;
+  --color-footer-bg-light: rgba(243, 230, 216, 0.88);
+  --color-footer-bg-dark: rgba(42, 33, 27, 0.82);
   --color-footer-text-light: #6d5a4a;
   --color-footer-text-dark: #d7c4b3;
   --section-divider: 1px solid rgba(125, 92, 63, 0.35);
   --border-radius: 0;
   --surface-shadow: 0 1px 0 rgba(47, 33, 20, 0.12);
   --interactive-hover: rgba(154, 91, 46, 0.18);
+  --surface-blur: blur(6px);
+  --background-image-light: none;
+  --background-image-dark: none;
 }
 
 /* Tech forward / mono preset */
@@ -127,18 +165,21 @@ body[data-style='mono'] {
   --color-text-dark: #e6ecf5;
   --color-link-light: #006dff;
   --color-link-dark: #8cb2ff;
-  --color-nav-bg-light: #ffffff;
-  --color-nav-bg-dark: #141a23;
+  --color-nav-bg-light: rgba(255, 255, 255, 0.82);
+  --color-nav-bg-dark: rgba(20, 26, 35, 0.78);
   --color-nav-text-light: #1a1f24;
   --color-nav-text-dark: #e6ecf5;
-  --color-footer-bg-light: #ffffff;
-  --color-footer-bg-dark: #141a23;
+  --color-footer-bg-light: rgba(255, 255, 255, 0.82);
+  --color-footer-bg-dark: rgba(20, 26, 35, 0.78);
   --color-footer-text-light: #5c6875;
   --color-footer-text-dark: #a7b4c6;
   --section-divider: 2px solid rgba(76, 139, 245, 0.35);
   --border-radius: 12px;
   --surface-shadow: 0 12px 30px rgba(16, 25, 36, 0.08);
   --interactive-hover: rgba(76, 139, 245, 0.16);
+  --surface-blur: blur(10px);
+  --background-image-light: none;
+  --background-image-dark: none;
 }
 
 /* Spacious / neo-grotesk preset */
@@ -171,6 +212,9 @@ body[data-style='airy'] {
   --border-radius: 16px;
   --surface-shadow: 0 18px 40px rgba(29, 26, 50, 0.12);
   --interactive-hover: rgba(138, 126, 255, 0.18);
+  --surface-blur: blur(14px);
+  --background-image-light: none;
+  --background-image-dark: none;
 }
 
 /* General page styling */
@@ -183,6 +227,11 @@ html {
 body {
   margin: 0;
   background-color: var(--background-color);
+  background-image: var(--background-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: var(--text-color);
   display: flex;
   flex-direction: column;
@@ -199,6 +248,8 @@ header {
   align-items: center;
   justify-content: space-between;
   box-shadow: var(--surface-shadow);
+  backdrop-filter: var(--surface-blur);
+  -webkit-backdrop-filter: var(--surface-blur);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -306,6 +357,8 @@ footer {
   color: var(--footer-text-color);
   text-align: center;
   padding: 1rem;
+  backdrop-filter: var(--surface-blur);
+  -webkit-backdrop-filter: var(--surface-blur);
   margin-top: auto;
 }
 
@@ -331,7 +384,7 @@ footer {
 }
 
 #style-select {
-  background-color: var(--background-color);
+  background-color: var(--nav-bg-color);
   color: var(--nav-text-color);
   border: var(--input-border);
   border-radius: var(--border-radius);
