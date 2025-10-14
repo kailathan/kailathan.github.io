@@ -86,6 +86,10 @@ body[data-theme='dark'] {
   --background-image: var(--background-image-dark);
 }
 
+body[data-theme='light'] {
+  --background-image: var(--background-image-light);
+}
+
 /* Default preset with textured backgrounds */
 body[data-style='default'] {
   --font-body: 'Inter', sans-serif;
