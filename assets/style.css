@@ -108,19 +108,19 @@ body[data-style='default'] {
   --color-text-dark: #effdff;
   --color-link-light: #1b7f88;
   --color-link-dark: #86e6ee;
-  --color-nav-bg-light: rgba(223, 245, 246, 0.9);
+  --color-nav-bg-light: rgba(209, 214, 221, 0.9);
   --color-nav-bg-dark: rgba(5, 35, 40, 0.65);
   --color-nav-text-light: #1d3a40;
   --color-nav-text-dark: #effdff;
-  --color-footer-bg-light: rgba(223, 245, 246, 0.9);
+  --color-footer-bg-light: rgba(209, 214, 221, 0.9);
   --color-footer-bg-dark: rgba(5, 35, 40, 0.65);
-  --color-footer-text-light: #2d4f55;
+  --color-footer-text-light: #2a3237;
   --color-footer-text-dark: #9bd4d9;
   --interactive-hover: rgba(47, 122, 129, 0.18);
   --surface-blur: blur(18px);
   --background-image-light: url('site_background_white_sparse.png');
   --background-image-dark: url('site_background_teal_sparse.png');
-  --meta-text-color: #255057;
+  --meta-text-color: #3a6268;
 }
 
 /* Editorial / serif leaning preset */
