@@ -5,8 +5,8 @@
  * A CSS custom property system is used to support light and dark themes.
  */
 
-/* Import font families used across the available style presets */
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap');
+/* Import font families used across the available presets */
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Orbitron:wght@400;500;600&family=Rajdhani:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap');
 
 /* Base colour variables for the light theme */
 :root {
@@ -108,19 +108,44 @@ body[data-style='default'] {
   --color-text-dark: #effdff;
   --color-link-light: #1b7f88;
   --color-link-dark: #86e6ee;
-  --color-nav-bg-light: rgba(209, 214, 221, 0.9);
+  --color-nav-bg-light: rgba(186, 191, 199, 0.92);
   --color-nav-bg-dark: rgba(5, 35, 40, 0.65);
-  --color-nav-text-light: #1d3a40;
+  --color-nav-text-light: #152b31;
   --color-nav-text-dark: #effdff;
-  --color-footer-bg-light: rgba(209, 214, 221, 0.9);
+  --color-footer-bg-light: rgba(186, 191, 199, 0.92);
   --color-footer-bg-dark: rgba(5, 35, 40, 0.65);
-  --color-footer-text-light: #2a3237;
+  --color-footer-text-light: #1e2a2f;
   --color-footer-text-dark: #9bd4d9;
   --interactive-hover: rgba(47, 122, 129, 0.18);
   --surface-blur: blur(18px);
   --background-image-light: url('site_background_white_sparse.png');
   --background-image-dark: url('site_background_teal_sparse.png');
-  --meta-text-color: #3a6268;
+  --meta-text-color: #3f646c;
+}
+
+body[data-style='default'][data-theme='dark'] {
+  --meta-text-color: #c5f3f7;
+}
+
+/* Font system overrides driven by data-font attribute */
+body[data-font='default'] {
+  --font-body: 'Inter', sans-serif;
+  --font-heading: 'Inter', sans-serif;
+}
+
+body[data-font='grotesk'] {
+  --font-body: 'Space Grotesk', sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
+}
+
+body[data-font='mono'] {
+  --font-body: 'IBM Plex Mono', monospace;
+  --font-heading: 'Space Grotesk', sans-serif;
+}
+
+body[data-font='tech'] {
+  --font-body: 'Rajdhani', sans-serif;
+  --font-heading: 'Orbitron', sans-serif;
 }
 
 /* Editorial / serif leaning preset */
@@ -266,6 +291,7 @@ header h1 {
   font-size: 1.5rem;
   margin: 0;
   color: var(--primary-color);
+  font-family: var(--font-heading);
 }
 
 nav {
@@ -390,7 +416,7 @@ footer {
   color: var(--nav-text-color);
 }
 
-#style-select {
+#font-select {
   background-color: var(--nav-bg-color);
   color: var(--nav-text-color);
   border: var(--input-border);
@@ -401,8 +427,8 @@ footer {
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-#style-select:hover,
-#style-select:focus-visible {
+#font-select:hover,
+#font-select:focus-visible {
   border-color: var(--accent-color);
   box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
   outline: none;

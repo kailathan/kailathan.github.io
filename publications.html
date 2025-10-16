@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="assets/style.css">
   <script defer src="assets/script.js"></script>
 </head>
-<body data-theme="light" data-style="default">
+<body data-theme="light" data-style="default" data-font="default">
   <header>
     <h1>Kai&nbsp;Li</h1>
     <nav>
@@ -20,12 +20,12 @@
     </nav>
     <div class="header-controls">
       <button id="theme-toggle" onclick="toggleTheme()">Switch to dark mode</button>
-      <label class="sr-only" for="style-select">Switch theme</label>
-      <select id="style-select" aria-label="Theme preset">
-        <option value="default">Default theme</option>
-        <option value="editorial">Editorial serif</option>
-        <option value="mono">Mono minimal</option>
-        <option value="airy">Airy spacious</option>
+      <label class="sr-only" for="font-select">Switch font</label>
+      <select id="font-select" aria-label="Font preset">
+        <option value="default">Inter (default)</option>
+        <option value="grotesk">Space Grotesk</option>
+        <option value="mono">IBM Plex Mono</option>
+        <option value="tech">Rajdhani / Orbitron</option>
       </select>
     </div>
   </header>

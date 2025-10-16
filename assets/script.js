@@ -5,12 +5,16 @@
  */
 
 const THEME_STORAGE_KEY = 'theme';
-const STYLE_STORAGE_KEY = 'style';
+const FONT_STORAGE_KEY = 'font';
 const DEFAULT_THEME = 'light';
-const DEFAULT_STYLE = 'default';
-const STYLE_PRESETS = new Set(['default', 'editorial', 'mono', 'airy']);
-const LEGACY_STYLE_MAP = {
+const DEFAULT_FONT = 'default';
+const FONT_PRESETS = new Set(['default', 'grotesk', 'mono', 'tech']);
+const LEGACY_FONT_MAP = {
   modern: 'default',
+  default: 'default',
+  editorial: 'grotesk',
+  airy: 'grotesk',
+  mono: 'mono',
 };
 
 function updateThemeToggleButton(currentTheme) {
@@ -19,17 +23,17 @@ function updateThemeToggleButton(currentTheme) {
   button.textContent = currentTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
 }
 
-function applyStylePreset(preset, options = {}) {
+function applyFontPreset(preset, options = {}) {
   const { persist = false } = options;
-  const mappedPreset = LEGACY_STYLE_MAP[preset] || preset;
-  const finalPreset = STYLE_PRESETS.has(mappedPreset) ? mappedPreset : DEFAULT_STYLE;
-  document.body.setAttribute('data-style', finalPreset);
-  const select = document.getElementById('style-select');
+  const mappedPreset = LEGACY_FONT_MAP[preset] || preset;
+  const finalPreset = FONT_PRESETS.has(mappedPreset) ? mappedPreset : DEFAULT_FONT;
+  document.body.setAttribute('data-font', finalPreset);
+  const select = document.getElementById('font-select');
   if (select && select.value !== finalPreset) {
     select.value = finalPreset;
   }
   if (persist) {
-    localStorage.setItem(STYLE_STORAGE_KEY, finalPreset);
+    localStorage.setItem(FONT_STORAGE_KEY, finalPreset);
   }
 }
 
@@ -51,17 +55,17 @@ document.addEventListener('DOMContentLoaded', () => {
   document.body.setAttribute('data-theme', initialTheme);
   updateThemeToggleButton(initialTheme);
 
-  const storedStyle = localStorage.getItem(STYLE_STORAGE_KEY);
-  const normalisedStoredStyle = LEGACY_STYLE_MAP[storedStyle] || storedStyle;
-  const initialStyle = STYLE_PRESETS.has(normalisedStoredStyle) ? normalisedStoredStyle : DEFAULT_STYLE;
-  applyStylePreset(initialStyle);
+  const storedFont = localStorage.getItem(FONT_STORAGE_KEY);
+  const normalisedStoredFont = LEGACY_FONT_MAP[storedFont] || storedFont;
+  const initialFont = FONT_PRESETS.has(normalisedStoredFont) ? normalisedStoredFont : DEFAULT_FONT;
+  applyFontPreset(initialFont);
 
-  const styleSelect = document.getElementById('style-select');
-  if (styleSelect) {
-    styleSelect.value = initialStyle;
-    styleSelect.addEventListener('change', (event) => {
+  const fontSelect = document.getElementById('font-select');
+  if (fontSelect) {
+    fontSelect.value = initialFont;
+    fontSelect.addEventListener('change', (event) => {
       const nextPreset = event.target.value;
-      applyStylePreset(nextPreset, { persist: true });
+      applyFontPreset(nextPreset, { persist: true });
     });
   }
 });
