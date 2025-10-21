@@ -55,18 +55,20 @@ document.addEventListener('DOMContentLoaded', () => {
   document.body.setAttribute('data-theme', initialTheme);
   updateThemeToggleButton(initialTheme);
 
-  const storedFont = localStorage.getItem(FONT_STORAGE_KEY);
-  const normalisedStoredFont = LEGACY_FONT_MAP[storedFont] || storedFont;
-  const initialFont = FONT_PRESETS.has(normalisedStoredFont) ? normalisedStoredFont : DEFAULT_FONT;
-  applyFontPreset(initialFont);
-
   const fontSelect = document.getElementById('font-select');
   if (fontSelect) {
+    const storedFont = localStorage.getItem(FONT_STORAGE_KEY);
+    const normalisedStoredFont = LEGACY_FONT_MAP[storedFont] || storedFont;
+    const initialFont = FONT_PRESETS.has(normalisedStoredFont) ? normalisedStoredFont : DEFAULT_FONT;
+    applyFontPreset(initialFont);
     fontSelect.value = initialFont;
     fontSelect.addEventListener('change', (event) => {
       const nextPreset = event.target.value;
       applyFontPreset(nextPreset, { persist: true });
     });
+  } else {
+    // Ensure default font when no selector is present
+    document.body.setAttribute('data-font', DEFAULT_FONT);
   }
 });
 

@@ -339,6 +339,22 @@ main {
   margin: 0 auto;
 }
 
+.profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 1.5rem 0;
+}
+
+.avatar {
+  width: 168px;
+  height: 168px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 40%;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+}
+
 section {
   margin-bottom: var(--section-spacing);
 }
