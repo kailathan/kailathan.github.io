@@ -355,6 +355,13 @@ main {
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
 }
 
+.avatar--inline {
+  width: 112px;
+  height: 112px;
+  float: right;
+  margin: 0 0 0.5rem 1rem;
+}
+
 section {
   margin-bottom: var(--section-spacing);
 }
@@ -473,5 +480,11 @@ footer {
 
   main {
     padding: 1.5rem;
+  }
+
+  .avatar--inline {
+    float: none;
+    display: block;
+    margin: 0 auto 1rem;
   }
 }
