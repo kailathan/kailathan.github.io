@@ -70,6 +70,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // Ensure default font when no selector is present
     document.body.setAttribute('data-font', DEFAULT_FONT);
   }
+
+  // Subtle background parallax on scroll
+  const PARALLAX_FACTOR = 0.02; // very slight pan
+  let ticking = false;
+  function updateParallax() {
+    const y = window.scrollY || window.pageYOffset || 0;
+    document.body.style.setProperty('--bg-offset-y', `${-y * PARALLAX_FACTOR}px`);
+    ticking = false;
+  }
+  function onScroll() {
+    if (!ticking) {
+      window.requestAnimationFrame(updateParallax);
+      ticking = true;
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  updateParallax();
 });
 
 // Fun fact generator

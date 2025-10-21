@@ -62,6 +62,7 @@
   --input-border: 1px solid transparent;
   --interactive-hover: rgba(0, 0, 0, 0.08);
   --surface-blur: blur(0px);
+  --bg-offset-y: 0px;
   --background-image-light: none;
   --background-image-dark: none;
   --background-image: var(--background-image-light);
@@ -261,7 +262,7 @@ body {
   background-color: var(--background-color);
   background-image: var(--background-image);
   background-size: cover;
-  background-position: center;
+  background-position: center calc(50% + var(--bg-offset-y, 0px));
   background-repeat: no-repeat;
   background-attachment: fixed;
   color: var(--text-color);
