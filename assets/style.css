@@ -407,6 +407,16 @@ section h2 {
   margin: 0.5rem 0;
 }
 
+/* Emoji list without default bullets */
+.emoji-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.emoji-list li {
+  margin: 0.35rem 0;
+}
+
 /* Footer styling */
 footer {
   background-color: var(--footer-bg-color);
