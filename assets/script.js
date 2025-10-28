@@ -6,7 +6,7 @@
 
 const THEME_STORAGE_KEY = 'theme';
 const FONT_STORAGE_KEY = 'font';
-const DEFAULT_THEME = 'light';
+const DEFAULT_THEME = 'dark';
 const DEFAULT_FONT = 'default';
 const FONT_PRESETS = new Set(['default', 'grotesk', 'mono', 'tech']);
 const LEGACY_FONT_MAP = {
