@@ -1,0 +1,176 @@
+/*
+ * Custom stylesheet for Kai Li's personal website.
+ *
+ * The design is clean and minimalistic, suitable for a student profile.
+ * A CSS custom property system is used to support light and dark themes.
+ */
+
+/* Import a modern sans‑serif font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Base colour variables for the light theme */
+:root {
+  /* A neutral, minimalistic palette */
+  --background-color: #ffffff;
+  --primary-color: #333333;
+  --secondary-color: #555555;
+  --accent-color: #888888;
+  --text-color: #222222;
+  --link-color: #0066cc;
+  --nav-bg-color: #f7f7f7;
+  --nav-text-color: #333333;
+  --footer-bg-color: #f7f7f7;
+  --footer-text-color: #777777;
+}
+
+/* Dark theme overrides using the data‑theme attribute on <body> */
+body[data-theme='dark'] {
+  /* Dark theme variables for a neutral aesthetic */
+  --background-color: #121212;
+  --primary-color: #e0e0e0;
+  --secondary-color: #bbbbbb;
+  --accent-color: #888888;
+  --text-color: #ffffff;
+  --link-color: #4dabf7;
+  --nav-bg-color: #1f1f1f;
+  --nav-text-color: #ffffff;
+  --footer-bg-color: #1f1f1f;
+  --footer-text-color: #777777;
+}
+
+/* General page styling */
+html {
+  /* Use the imported Inter font for a clean, modern look */
+  font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  background-color: var(--nav-bg-color);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header h1 {
+  font-size: 1.5rem;
+  margin: 0;
+  color: var(--primary-color);
+}
+
+nav {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: var(--nav-text-color);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+nav a:hover {
+  background-color: var(--secondary-color);
+  color: var(--background-color);
+}
+
+/* Theme toggle button */
+#theme-toggle {
+  background-color: var(--accent-color);
+  color: var(--background-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background-color 0.3s ease;
+}
+
+#theme-toggle:hover {
+  background-color: var(--primary-color);
+}
+
+main {
+  flex: 1;
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+section {
+  margin-bottom: 3rem;
+}
+
+section h2 {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 0.25rem;
+}
+
+/* Publication and experience list styling */
+.item {
+  margin-bottom: 1.5rem;
+}
+
+.item h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--secondary-color);
+}
+
+.item .meta {
+  font-size: 0.875rem;
+  color: var(--footer-text-color);
+  margin-bottom: 0.5rem;
+}
+
+.item p {
+  margin: 0.25rem 0;
+  line-height: 1.5;
+}
+
+/* Awards list styling */
+.awards ul {
+  padding-left: 1rem;
+}
+
+.awards li {
+  margin: 0.5rem 0;
+}
+
+/* Footer styling */
+footer {
+  background-color: var(--footer-bg-color);
+  color: var(--footer-text-color);
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Embedded CV on cv.html */
+.cv-embed {
+  width: 100%;
+  height: 80vh;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
