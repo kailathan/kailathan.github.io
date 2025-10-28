@@ -299,6 +299,7 @@ header h1 {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+  margin-bottom: 0.75rem;
 }
 
 .contact {
@@ -525,7 +526,7 @@ footer {
   border: 0;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 600px) {
   header {
     padding: 1rem;
   }
@@ -545,7 +546,5 @@ footer {
     margin: 0 auto 1rem;
   }
 
-  .intro {
-    grid-template-columns: 1fr;
-  }
+  .intro { grid-template-columns: 1fr; }
 }
